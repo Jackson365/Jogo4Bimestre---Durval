@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     
     private bool isJumping;
-    private bool dobleJump;
+    //private bool dobleJump;
     private bool isAttack;
     
     private Rigidbody2D rig;
@@ -76,18 +76,18 @@ public class PlayerController : MonoBehaviour
             {
                 anim.SetInteger("Transitions", 2);
                 rig.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                dobleJump = true;
+                //dobleJump = true;
                 isJumping = true;
             }
-            else
-            {
-                if (dobleJump)
-                {
-                    anim.SetInteger("Transitions", 2);
-                    rig.AddForce(new Vector2(0, jumpForce * 1), ForceMode2D.Impulse);
-                    dobleJump = false;
-                }
-            }
+            //else
+            //{
+                //if (dobleJump)
+                //{
+                    //anim.SetInteger("Transitions", 2);
+                    //rig.AddForce(new Vector2(0, jumpForce * 1), ForceMode2D.Impulse);
+                    //dobleJump = false;
+                //}
+            //}
         }
     }
 
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
             isAttack = true;
             anim.SetInteger("Transitions", 3);
             
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.6f);
             anim.SetInteger("Transitions", 0);
             isAttack = false;
         }
