@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private float movement;
+
+    public AudioSource attack;
+    public AudioSource jump;
+    public AudioSource walking;
     
     // Start is called before the first frame update
     void Start()
@@ -40,13 +44,14 @@ public class PlayerController : MonoBehaviour
     {
         movement = Input.GetAxis("Horizontal");
 
-        rig.velocity = new Vector2(movement * speed, rig.velocity.y);
+        rig.velocity = new Vector2(movement * speed, rig.velocity.y);  
 
         if (movement > 0)
         {
+            WalkingAudio();
             if (!isJumping)
             {
-                anim.SetInteger("Transitions", 1);   
+                anim.SetInteger("Transitions", 1);  
             }
             
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -54,9 +59,10 @@ public class PlayerController : MonoBehaviour
 
         if (movement < 0)
         {
+            WalkingAudio();
             if (!isJumping)
             {
-                anim.SetInteger("Transitions", 1);    
+                anim.SetInteger("Transitions", 1);
             }
             
             transform.eulerAngles = new Vector3(0, 180, 0);
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetInteger("Transitions", 0);
         }
+
     }
 
     void Jump()
@@ -75,6 +82,7 @@ public class PlayerController : MonoBehaviour
             if (!isJumping)
             {
                 anim.SetInteger("Transitions", 2);
+                jump.Play();
                 rig.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 //dobleJump = true;
                 isJumping = true;
@@ -100,10 +108,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            AttackAudio();
             isAttack = true;
             anim.SetInteger("Transitions", 3);
             
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.4f);
             anim.SetInteger("Transitions", 0);
             isAttack = false;
         }
@@ -115,5 +124,15 @@ public class PlayerController : MonoBehaviour
         {
             isJumping = false;
         }
+    }
+
+    void AttackAudio()
+    {
+        attack.Play();
+    }
+
+    void WalkingAudio()
+    {
+        walking.Play();  
     }
 }
