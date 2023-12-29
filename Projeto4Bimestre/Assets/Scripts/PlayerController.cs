@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     
     public AudioSource attack;
     public AudioSource jump;
+    public AudioSource walking;
     
     // Start is called before the first frame update
     void Start()
@@ -43,14 +44,14 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         movement = Input.GetAxis("Horizontal");
-
+ 
         rig.velocity = new Vector2(movement * speed, rig.velocity.y);  
 
         if (movement > 0)
         {
             if (!isJumping)
             {
-                anim.SetInteger("Transitions", 1);  
+                anim.SetInteger("Transitions", 1);
             }
             
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -127,5 +128,10 @@ public class PlayerController : MonoBehaviour
     void AttackAudio()
     {
         attack.Play();
+    }
+
+    public void Passo()
+    {
+        walking.Play();
     }
 }
