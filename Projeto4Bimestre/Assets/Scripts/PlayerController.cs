@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,10 +17,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
 
     private float movement;
-
+    
     public AudioSource attack;
     public AudioSource jump;
-    public AudioSource walking;
     
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
         if (movement > 0)
         {
-            WalkingAudio();
             if (!isJumping)
             {
                 anim.SetInteger("Transitions", 1);  
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
         if (movement < 0)
         {
-            WalkingAudio();
             if (!isJumping)
             {
                 anim.SetInteger("Transitions", 1);
@@ -129,10 +127,5 @@ public class PlayerController : MonoBehaviour
     void AttackAudio()
     {
         attack.Play();
-    }
-
-    void WalkingAudio()
-    {
-        walking.Play();  
     }
 }

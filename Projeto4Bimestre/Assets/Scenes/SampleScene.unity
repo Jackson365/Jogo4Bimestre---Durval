@@ -159,7 +159,6 @@ MonoBehaviour:
   jumpForce: 0
   attack: {fileID: 0}
   jump: {fileID: 0}
-  walking: {fileID: 0}
 --- !u!50 &417130619
 Rigidbody2D:
   serializedVersion: 4
@@ -675,6 +674,7 @@ GameObject:
   - component: {fileID: 1245085343}
   - component: {fileID: 1245085344}
   - component: {fileID: 1245085345}
+  - component: {fileID: 1245085346}
   m_Layer: 0
   m_Name: PlayerOk
   m_TagString: Untagged
@@ -698,7 +698,6 @@ MonoBehaviour:
   jumpForce: 10
   attack: {fileID: 1245085343}
   jump: {fileID: 1245085344}
-  walking: {fileID: 1245085345}
 --- !u!50 &1245085338
 Rigidbody2D:
   serializedVersion: 4
@@ -1035,7 +1034,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96ce02c51092121499564803721d8a19, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f834e75d367f01645b1cdc445cfa27e0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1121,6 +1120,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1245085346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245085336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ace9c336e1c4641a408404dfe5c51f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1454549167
 GameObject:
   m_ObjectHideFlags: 0
